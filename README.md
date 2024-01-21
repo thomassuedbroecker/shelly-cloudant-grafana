@@ -43,9 +43,9 @@ The [`Shelly 3EM`](https://shelly.com) _" is a WiFi smart 3-phase energy meter w
 
 [Shelly](https://shelly.com) provides a [Cloud subscription](https://kb.shelly.cloud/knowledge-base/premium-service) in combination with the mobile app called `Shelly Smart Control` you have enormous options for `real-time` monitoring and managing activations.
 
-Therefore the contains the implements for a **`Shelly 3EM`-`Cloudant`-`Grafana`-connection-server**. The implementation doesn't have the objective of monitoring `real-time` data of the `Shelly 3EM`. 
+Therefore GitHub repository contains an example to implement a Shelly 3EM-Cloudant-Grafana-connection-s contains the implements for a **`Shelly 3EM`-`Cloudant`-`Grafana`-connection-server**. The implementation doesn't have the objective of monitoring `real-time` data of the `Shelly 3EM`. 
 
-The main objective is to save historical data hourly in the size of `0,375 kb` in a [`JSON`](https://en.wikipedia.org/wiki/JSON) format for one object to reduce storage for the free tier in the `lite plan` of an [`IBM Cloud Cloudant database`](https://cloud.ibm.com/catalog/services/cloudant).
+The main objective is to save historical data hourly in the size of `0,375 kb` in a [`JSON`](https://en.wikipedia.org/wiki/JSON) format for one Shelly data object to reduce storage for the free tier in the `lite plan` of an [`IBM Cloud Cloudant database`](https://cloud.ibm.com/catalog/services/cloudant).
 The visualization of historical hourly data is done by using `Grafana`. To display the historical data, we can create incredible custom dashboards with the `Open-Source` version of [`Grafana`](https://grafana.com/oss/grafana/).
 
 These are the components used in this project:
