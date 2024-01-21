@@ -1,0 +1,80 @@
+FROM grafana/grafana:latest
+
+# set root user for  supervisor installation
+USER root
+
+RUN apk update
+RUN apk add python3
+RUN apk add --no-cache supervisor
+RUN python3 -m ensurepip --upgrade
+
+# Create a application directory
+WORKDIR /
+RUN mkdir app
+
+RUN addgroup -g 1500 grafanausers 
+RUN adduser --disabled-password -u 1501 grafanauser grafanausers 
+RUN chown -R grafanauser:grafanausers /app
+RUN chown -R grafanauser:grafanausers /usr/share/grafana
+# Allow the grafanauser to access the supervisor app
+RUN chown -R grafanauser:grafanausers /usr/bin
+
+USER grafanauser
+
+RUN pwd
+# Set directory
+WORKDIR /app
+
+# Install needed environment
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install "fastapi[all]"
+RUN python3 -m pip install requests
+RUN python3 -m pip install pydantic
+RUN python3 -m pip install fastapi-utils
+RUN python3 -m pip install schedule
+RUN python3 -m pip install typing
+RUN python3 -m pip install --upgrade "ibmcloudant>=0.0.27"
+
+# Create modules folder
+RUN mkdir modules
+RUN python3 -m pip freeze > requirements.txt 
+
+RUN ls -al
+
+# Application source
+COPY /../requirements.txt /app
+COPY /../shelly-3em-cloudant-connector.py /app
+COPY /../modules/apis_payload.py /app/modules
+COPY /../modules/apis_response_format.py /app/modules
+COPY /../modules/load_env.py /app/modules
+COPY /../modules/requests_cloudant.py /app/modules
+COPY /../modules/requests_ibmcloud_token.py /app/modules
+COPY /../modules/requests_shelly_3em.py /app/modules
+COPY /../modules/requests_json_grafana_datasource.py /app/modules
+
+# Bash scripts to configure the running container 
+COPY /../docker/grafana_shelly_cloudant_connector.sh /app
+COPY /../docker/grafana_generate_env-config.sh /app
+COPY /../docker/grafana_run.sh /app
+
+# Grafana config
+COPY /../grafana_config/grafana-datasource.yaml /etc/grafana/provisioning/datasources/grafana-datasource.yaml
+COPY /../grafana_config/grafana-dashboards.yaml /etc/grafana/provisioning/dashboards/grafana-dashboards.yaml
+COPY /../grafana_config/shelly-basics-v1.json /etc/grafana/provisioning/dashboards/shelly-basics-v1.json
+COPY /../grafana_config/shelly-basics-v2.json /etc/grafana/provisioning/dashboards/shelly-basics-v2.json
+COPY /../grafana_config/shelly-overview-phase-1-3-power-and-total-returned.json /etc/grafana/provisioning/dashboards/shelly-overview-phase-1-3-power-and-total-returned.json
+
+# Copy supervisord configuration file
+COPY /../docker/supervisord.conf /etc/supervisord.conf
+
+#WORKDIR /usr/share/grafana
+WORKDIR /app
+
+RUN echo "export PATH=$PATH:/app/grafana_shelly_cloudant_connector.sh" >> ~/.bashrc
+
+# Ports for both running applications
+EXPOSE 8081
+EXPOSE 3000
+
+# Start supervisord
+ENTRYPOINT ["/bin/sh","/app/grafana_run.sh"]

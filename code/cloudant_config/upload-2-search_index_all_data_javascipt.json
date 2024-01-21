@@ -1,0 +1,11 @@
+{
+  "_id": "_design/design_search_idx_results_emeters_all",
+  "views": {},
+  "language": "javascript",
+  "indexes": {
+    "search_idx_results_emeters_all": {
+      "analyzer": "standard",
+      "index": "function (doc) {\n  index(\"_id\", doc._id);\n  if( doc.result.date){\n    index(\"date\", doc.result.date,{\"store\": true,\"facet\":true});\n  }\n  if(doc.result.total_power){\n    index(\"total_power\", doc.result.total_power,{\"store\": true,\"facet\":true});\n  }\n  var value = doc.result.emeters[0].total\n  if(value){\n    index(\"phase1_total\", value,{\"store\": true,\"facet\":true});\n  }\n  value = doc.result.emeters[1].total\n  if(value){\n    index(\"phase2_total\", value,{\"store\": true,\"facet\":true});\n  }\n  value = doc.result.emeters[2].total\n  if(value){\n    index(\"phase3_total\", value,{\"store\": true,\"facet\":true});\n  }\n  value = doc.result.emeters[0].total_returned\n  if(value){\n    index(\"phase1_total_returned\", value,{\"store\": true,\"facet\":true});\n  } else {\n    index(\"phase1_total_returned\", 0 ,{\"store\": true,\"facet\":true});\n  }\n  value = doc.result.emeters[1].total_returned\n  if(value){\n    index(\"phase2_total_returned\", value,{\"store\": true,\"facet\":true});\n  } else {\n    index(\"phase2_total_returned\", 0 ,{\"store\": true,\"facet\":true});\n  }\n  value = doc.result.emeters[2].total_returned\n  if(value){\n    index(\"phase3_total_returned\", value,{\"store\": true,\"facet\":true});\n  } else {\n    index(\"phase3_total_returned\", 0 ,{\"store\": true,\"facet\":true});\n  }\n  value = doc.result.emeters[0].power\n  if(value){\n    index(\"phase1_power\", value,{\"store\": true,\"facet\":true});\n  }\n  value = doc.result.emeters[1].power\n  if(doc.result.emeters[1].power){\n    index(\"phase2_power\", doc.result.emeters[1].power,{\"store\": true,\"facet\":true});\n  }\n  value = doc.result.emeters[2].power\n  if(value){\n    index(\"phase3_power\", value,{\"store\": true,\"facet\":true});\n  }\n}"
+    }
+  }
+}

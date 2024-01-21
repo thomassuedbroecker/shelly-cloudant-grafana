@@ -1,0 +1,16 @@
+{
+    "_id": "_design/example-index-emeters-phases-json",  
+    "ddoc": "_design/example-index-emeters-phases-json",
+    "name": "example-index-emeters-phases-json",
+    "type": "json",
+    "partitioned": false,
+    "index": {
+     "fields": [
+       "result.emeters.0", 
+       "result.emeters.1",
+       "result.emeters.2",
+       "result.date",
+       "result.total_power"
+     ]
+    }
+}

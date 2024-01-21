@@ -1,0 +1,789 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "This is a sample data set for the shelly basics",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1000
+              },
+              {
+                "color": "#EAB839",
+                "value": 2000
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource"
+          },
+          "editorMode": "code",
+          "payload": "{\n    \"search_option\":\"view\",\n    \"search_topic\":\"date\",\n    \"search_string\":\"\\\"2024-01-03*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Consumption of the Phases",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "time",
+                "targetField": "time"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "time",
+                "phase1-power",
+                "phase2-power",
+                "phase3-power"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "description": "Configured with transform data.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "vertical",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "time",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 100
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "e7cd9a24-cd18-4402-889d-c54cdf9ca76c"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"view\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01-03*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Time series bar chart",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "time",
+                "targetField": "time"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "phase1-total"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "phase1-power"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 50000
+              },
+              {
+                "color": "#EAB839",
+                "value": 60000
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"search\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Total power phase 1",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "YYYY-MM-DD HH",
+                "destinationType": "time",
+                "targetField": "time"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "time",
+                "phase1-total"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "phase1-total"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Phase 1 Total"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "phase1-power"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Phase 1 Power"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "time"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "phase1-total-returned"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Phase 1 Total Returned"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Date"
+          }
+        ]
+      },
+      "pluginVersion": "10.2.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "e7cd9a24-cd18-4402-889d-c54cdf9ca76c"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"view\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01-03*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Overview",
+      "transformations": [],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "series",
+            "axisLabel": "Watt h",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 16,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 7,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "e7cd9a24-cd18-4402-889d-c54cdf9ca76c"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"view\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01-03*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Total Returned Phase 1",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "YYYY-MM-DD",
+                "destinationType": "time",
+                "targetField": "time"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "time",
+                "phase1-total-returned"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "red",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "series",
+            "axisLabel": "Watt h",
+            "axisPlacement": "auto",
+            "axisWidth": 44,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 16,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 9,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Phase 1",
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"view\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01-03*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Total consumed \"Phase 1\"",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "YYYY-MM-DD",
+                "destinationType": "time",
+                "targetField": "time"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "time",
+                "phase1-total"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "search_option",
+          "value": "search"
+        },
+        "datasource": {
+          "type": "simpod-json-datasource"   
+        },
+        "definition": "undefined",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "query0",
+        "options": [],
+        "query": {
+          "format": "string"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2023-12-22T23:00:00.000Z",
+    "to": "2024-01-09T22:59:59.000Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Shelly - Basics V2",
+  "uid": "b270c217-1ff8-4a67-9d60-91dd27321870",
+  "version": 16,
+  "weekStart": ""
+}

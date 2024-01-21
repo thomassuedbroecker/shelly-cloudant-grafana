@@ -1,0 +1,33 @@
+{
+    "emeters": [
+        {
+            "power": 337.36,
+            "pf": 0.86,
+            "current": 1.77,
+            "voltage": 222.25,
+            "is_valid": True,
+            "total": 13098.7,
+            "total_returned": 0.3
+        },
+        {
+            "power": 9.44,
+            "pf": 0.65,
+            "current": 0.07,
+            "voltage": 223.68,
+            "is_valid": True,
+            "total": 6781.7,
+            "total_returned": 0.0
+        },
+        {
+            "power": 212.4,
+            "pf": 0.92,
+            "current": 1.04,
+            "voltage": 222.73,
+            "is_valid": True,
+            "total": 8667.1,
+            "total_returned": 0.0
+        }
+    ],
+    "date": "25-12-2023 15:27:13",
+    "total_power": 559.2
+}

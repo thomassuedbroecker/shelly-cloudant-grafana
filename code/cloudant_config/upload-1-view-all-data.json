@@ -1,0 +1,9 @@
+{
+  "_id": "_design/design_view_all_docs",
+  "views": {
+    "view_all_docs": {
+      "map": "function (doc) {\n  if (doc._id) { \n    emit(doc._id, {\n      date: doc.result.date,\n      total_power:doc.result.total_power, \n      phase1_total:doc.result.emeters[0].total,\n      phase2_total:doc.result.emeters[1].total,\n      phase3_total:doc.result.emeters[2].total,\n      phase1_total_returned:doc.result.emeters[0].total_returned,\n      phase2_total_returned:doc.result.emeters[1].total_returned,\n      phase3_total_returned:doc.result.emeters[2].total_returned,\n      phase1_power:doc.result.emeters[0].power,\n      phase2_power:doc.result.emeters[1].power,\n      phase3_power:doc.result.emeters[2].power\n    });\n  }\n}"
+    }
+  },
+  "language": "javascript"
+}

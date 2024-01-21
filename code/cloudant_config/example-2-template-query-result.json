@@ -1,0 +1,24 @@
+{
+  "selector": {
+    "_id": {
+      "$gt": "0"
+    }
+  },
+  "fields": [
+    "_id",
+    "_rev",
+    "result.date",
+    "result.total_power",
+    "result.emeters.0.power",
+    "result.emeters.1.power",
+    "result.emeters.2.power",
+    "result.emeters.0.total_returned",
+    "result.emeters.1.total_returned",
+    "result.emeters.2.total_returned"
+  ],
+  "sort": [
+    {
+      "_id": "asc"
+    }
+  ]
+}

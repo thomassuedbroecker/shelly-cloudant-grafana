@@ -1,0 +1,677 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 3,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"search\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Power Consumption  Phase 1 in Januar 2024",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "phase1-power": "Phase 1 Power",
+              "phase1-total": "Phase 1 Total",
+              "phase1-total-returned": "Phase 1 Total Returned",
+              "phase2-power": "Phase 2 Power",
+              "phase2-total": "Phase 2 Total",
+              "phase2-total-returned": "Phase 2 Total Returned",
+              "phase3-power": "Phase 3 Power",
+              "phase3-total": "Phase 3 Total",
+              "phase3-total-returned": "Phase 3 Total Returned",
+              "time": "Time",
+              "total-power": "Total Power"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Time",
+                "Phase 1 Power"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"search\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Power Consumption  Phase 1 to 3 in Januar 2024",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "phase1-power": "Phase 1 Power",
+              "phase1-total": "Phase 1 Total",
+              "phase1-total-returned": "Phase 1 Total Returned",
+              "phase2-power": "Phase 2 Power",
+              "phase2-total": "Phase 2 Total",
+              "phase2-total-returned": "Phase 2 Total Returned",
+              "phase3-power": "Phase 3 Power",
+              "phase3-total": "Phase 3 Total",
+              "phase3-total-returned": "Phase 3 Total Returned",
+              "time": "Time",
+              "total-power": "Total Power"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Time",
+                "Phase 1 Power",
+                "Phase 2 Power",
+                "Phase 3 Power"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-YlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"view\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Power Consumption  Phase 2 in Januar 2024",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "phase1-power": "Phase 1 Power",
+              "phase1-total": "Phase 1 Total",
+              "phase1-total-returned": "Phase 1 Total Returned",
+              "phase2-power": "Phase 2 Power",
+              "phase2-total": "Phase 2 Total",
+              "phase2-total-returned": "Phase 2 Total Returned",
+              "phase3-power": "Phase 3 Power",
+              "phase3-total": "Phase 3 Total",
+              "phase3-total-returned": "Phase 3 Total Returned",
+              "time": "Time",
+              "total-power": "Total Power"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Time",
+                "Phase 2 Power"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "description": "Negative values show returned in Phase 1",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"custom\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"(phase1_power:[-5000 TO 0])\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Returned  Phase 1 in Januar 2024",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "phase1-power": "Phase 1 Power",
+              "phase1-total": "Phase 1 Total",
+              "phase1-total-returned": "Phase 1 Total Returned",
+              "phase2-power": "Phase 2 Power",
+              "phase2-total": "Phase 2 Total",
+              "phase2-total-returned": "Phase 2 Total Returned",
+              "phase3-power": "Phase 3 Power",
+              "phase3-total": "Phase 3 Total",
+              "phase3-total-returned": "Phase 3 Total Returned",
+              "time": "Time",
+              "total-power": "Total Power"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Time",
+                "Phase 1 Power"
+              ]
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource"
+          },
+          "editorMode": "code",
+          "payload": "{\n   \"search_option\":\"search\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01*\\\"\"\n}",
+          "refId": "A",
+          "target": "shelly3em"
+        }
+      ],
+      "title": "Power Consumption  Phase 3 in Januar 2024",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "phase1-power": "Phase 1 Power",
+              "phase1-total": "Phase 1 Total",
+              "phase1-total-returned": "Phase 1 Total Returned",
+              "phase2-power": "Phase 2 Power",
+              "phase2-total": "Phase 2 Total",
+              "phase2-total-returned": "Phase 2 Total Returned",
+              "phase3-power": "Phase 3 Power",
+              "phase3-total": "Phase 3 Total",
+              "phase3-total-returned": "Phase 3 Total Returned",
+              "time": "Time",
+              "total-power": "Total Power"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Time",
+                "Phase 3 Power"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2023-12-31T23:00:00.000Z",
+    "to": "2024-01-31T22:59:59.000Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Shelly - Overview Phase 1-3  Power and Total Returned",
+  "uid": "bc07772d-030b-442a-83f0-7d13112fa523",
+  "version": 2,
+  "weekStart": ""
+}
