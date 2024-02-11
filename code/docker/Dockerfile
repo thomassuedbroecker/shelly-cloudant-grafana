@@ -5,7 +5,7 @@ FROM python:3.11.2-slim-buster
 
 # Update packages
 USER root
-RUN apk upgrade libssl3 libcrypto3 libexpat libexpat sqlite-lib
+RUN apk upgrade libssl3 libcrypto3 libexpat libexpat
 
 # Set directory
 WORKDIR /app

@@ -8,7 +8,7 @@ RUN apk add python3
 RUN apk add --no-cache supervisor
 RUN python3 -m ensurepip --upgrade
 # Update packages based on security scan IBM Cloud container registry
-RUN apk upgrade libssl3 libcrypto3 libexpat libexpat sqlite-lib
+RUN apk upgrade libssl3 libcrypto3 libexpat libexpat
 
 # Create a application directory
 WORKDIR /
