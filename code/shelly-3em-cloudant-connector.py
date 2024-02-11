@@ -724,7 +724,7 @@ def custom_openapi():
     )
 
     openapi_schema["info"]["x-logo"] = {
-        "url": "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png"
+        "url": "https://raw.githubusercontent.com/thomassuedbroecker/shelly-cloudant-grafana/main/images/free-icons8-solar-panel-53.png"
     }
 
     app.openapi_schema = openapi_schema
