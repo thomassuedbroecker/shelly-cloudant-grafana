@@ -25,7 +25,8 @@
   "panels": [
     {
       "datasource": {
-        "type": "simpod-json-datasource"
+        "type": "simpod-json-datasource",
+        "uid": "eabe83b8-091c-4454-af2f-ac86287cf48c"
       },
       "fieldConfig": {
         "defaults": {
@@ -77,7 +78,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -109,7 +111,7 @@
           "editorMode": "code",
           "payload": "{\n    \"search_option\":\"custom\", \n    \"search_topic\":\"date\", \n    \"search_string\":\"(phase1_power:{1000 TO 2000]) AND (date:\\\"2024-01*\\\")\"\n}",
           "refId": "A",
-          "target": "shelly3em"
+          "target": "shelly3emmetric"
         }
       ],
       "title": "Basics",
@@ -117,7 +119,8 @@
     },
     {
       "datasource": {
-        "type": "simpod-json-datasource"
+        "type": "simpod-json-datasource",
+        "uid": "eabe83b8-091c-4454-af2f-ac86287cf48c"
       },
       "fieldConfig": {
         "defaults": {
@@ -138,7 +141,8 @@
                 "value": 85
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -164,7 +168,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "targets": [
         {
           "datasource": {
@@ -174,7 +178,7 @@
           "editorMode": "code",
           "payload": "{\n   \"search_option\":\"search\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01*\\\"\"\n}",
           "refId": "A",
-          "target": "shelly3em"
+          "target": "shelly3emmetric"
         }
       ],
       "title": "Basic overview",
@@ -182,7 +186,8 @@
     },
     {
       "datasource": {
-        "type": "simpod-json-datasource"
+        "type": "simpod-json-datasource",
+        "uid": "eabe83b8-091c-4454-af2f-ac86287cf48c"
       },
       "fieldConfig": {
         "defaults": {
@@ -209,7 +214,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -238,7 +244,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "targets": [
         {
           "datasource": {
@@ -248,22 +254,22 @@
           "editorMode": "code",
           "payload": "{\n   \"search_option\":\"view\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"\\\"2024-01-03*\\\"\"\n}",
           "refId": "A",
-          "target": "shelly3em"
+          "target": "shelly3emmetric"
         }
       ],
       "title": "Shelly Table View",
       "type": "table"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
-    "to": "now"
+    "from": "2023-12-31T23:00:00.000Z",
+    "to": "2024-03-03T22:59:59.000Z"
   },
   "timepicker": {},
   "timezone": "",

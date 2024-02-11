@@ -1,0 +1,77 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 6,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "libraryPanel": {
+        "name": "Returned  Phase 1 in Januar 2024 V2",
+        "uid": "b705588b-a200-472e-aed7-5ab48b64a4c8"
+      },
+      "title": "Returned  Phase 1 in Januar 2024"
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "libraryPanel": {
+        "name": "Returned  Phase 1 in Januar 2024",
+        "uid": "f2f4e87f-7c8d-494b-b39f-65703db6a01a"
+      },
+      "title": "Returned  Phase 1 in Januar 2024"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2023-12-31T23:00:00.000Z",
+    "to": "2024-02-11T22:59:59.000Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Returned 2024",
+  "uid": "a51bdd68-3a7c-4c9b-8746-d0b6bd592684",
+  "version": 4,
+  "weekStart": ""
+}
