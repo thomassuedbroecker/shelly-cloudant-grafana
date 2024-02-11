@@ -300,22 +300,27 @@ async def post_db_create_doc_from_file(   file: Annotated[UploadFile, File(descr
     These needed files are located in the cloned GitHub repo  folder `[Project]/code/cloudant_config`.
     - `upload-1-view*.json`
     - `upload-2-search*.json`
-    """ 
-    data =  await file.read()
-    # convert return value to needed JSON format
-    # From binary to text
-    data_string = data.decode('ascii')
-    # From binary to te
-    logging.debug(f"Text:\n{data_string}\n\n")
-    document_json = json.loads(data_string)
-    logging.debug(f"JSON load:\n{document_json}\n\n")
-    data, validation = save_data(document_json)
-    logging.debug(f"{data}")
+    """
+    try: 
+        data =  await file.read()
+        # convert return value to needed JSON format
+        # From binary to text
+        data_string = data.decode('ascii')
+        # From binary to te
+        logging.debug(f"Text:\n{data_string}\n\n")
+        document_json = json.loads(data_string)
+        logging.debug(f"JSON load:\n{document_json}\n\n")
+        data, validation = save_data(document_json)
+        logging.debug(f"{data}")
 
-    return_data = { "data": data,
-                    "filename": file.filename         
-    }
-
+        return_data = { "data": data,
+                        "filename": file.filename         
+        }
+    except Exception as e:       
+        error = {"exception": e }                  
+        data  = str(error)
+        validation = False          
+    
     return {"data": return_data, "validation": validation }
 
 @app.get("/db_create_cloudant_database", response_model=Cloudant_response)
@@ -324,18 +329,27 @@ def get_db_create_database() -> Any:
     This endpoint creates a `Cloudant database` \n 
     based on the environment variable `CLOUDANT_DB_NAME` in the `.env` file.
     """
-    data, validation = create_database()
-    
-    return {"data": data, "validation": validation }
+    try: 
+        data, validation = create_database()
+    except Exception as e:       
+        error = {"exception": e }                  
+        data  = str(error)
+        verification = False        
+    return { "data":data, "status":verification }     
 
 @app.get("/db_get_cloudant_information", response_model=Cloudant_response)
 def get_db_information() -> Any:
     """
     This endpoint provides the `Cloudant database` configuration information.
     """
-    data, validation = get_database_information()
+    try: 
+        data, validation = get_database_information()
+    except Exception as e:       
+        error = {"exception": e }                  
+        data  = str(error)
+        verification = False        
+    return { "data":data, "status":verification }     
     
-    return {"data": data, "validation": validation }
 
 @app.get("/db_get_all_indexes", response_model=Cloudant_response)
 def get_all_db_indexes() -> Any:
@@ -505,9 +519,10 @@ async def grafana_json_datasource_metrics(response: Response, request: Request) 
     """
     This endpoint is related to grafana integration and define the metrics that can be select in Grafana.
     """
-    body = await request.body()
-    logging.debug(f"\nRequest body:\n{type(body)}\n")
+
     try:
+        body = await request.body()
+        logging.debug(f"\nRequest body:\n{type(body)}\n")
         body_data = json.loads(body)
         logging.debug(f"\nRequest body:\n{body_data}\n")
     except Exception as e:       
@@ -523,9 +538,10 @@ async def grafana_json_datasource_metric_payload_options( response: Response, re
     This endpoint is related to Grafana `JSON` integration. \n
     The endpoint returns the metrics payload options.
     """
-    body = await request.body()
-    logging.debug(f"\nRequest body:\n{type(body)}\n")
+
     try:
+        body = await request.body()
+        logging.debug(f"\nRequest body:\n{type(body)}\n")
         if type(body) == bytes: 
              body_data = json.loads(body)
              logging.debug(f"\nRequest body:\n{body_data}\n")
@@ -611,10 +627,9 @@ async def grafana_json_datasource_query(response: Response, request: Request) ->
      }
     ```
     """
-
-    body = await request.body()
-    
+ 
     try:
+        body = await request.body()
         logging.debug(f"\nRequest body:\n{type(body)}\n")
         if type(body) == bytes: 
             body_data = json.loads(body)
@@ -674,9 +689,10 @@ async def grafana_json_datasource_variable(response: Response, request: Request)
     This endpoint is related to Grafana `JSON` integration. \n
     The endpoint returns the variable values.
     """
-    body = await request.body()
-    logging.debug(f"\nRequest body:\n{type(body)}\n")
+
     try:
+        body = await request.body()
+        logging.debug(f"\nRequest body:\n{type(body)}\n")
         if type(body) == bytes: 
              body_data = json.loads(body)
              logging.debug(f"\nRequest body:\n{body_data}\n")
