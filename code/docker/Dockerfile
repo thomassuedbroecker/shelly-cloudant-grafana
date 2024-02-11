@@ -1,7 +1,10 @@
 ###############################
 # 1. Create a build image
 # as BUILDER_IMAGE
-FROM python:3.11.2-slim-buster 
+FROM python:3.11.2-slim-buster
+
+# Update packages
+RUN apk upgrade libssl3 libcrypto3 libexpat libexpat sqlite-lib
 
 # Set directory
 WORKDIR /app
