@@ -1,5 +1,8 @@
 FROM grafana/grafana:latest
 
+# Update packages based on security scan IBM Cloud container registry
+RUN apk upgrade libssl3 libcrypto3 libexpat libexpat sqlite-lib
+
 # set root user for  supervisor installation
 USER root
 
