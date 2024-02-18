@@ -199,7 +199,9 @@ function log_deployment_configuration_all(){
     # remove all comments of the envirement configuration and save in all
     sed '/^#/d;s/\IBM_CLOUD_API_KEY=.*/IBM_CLOUD_API_KEY=/' $HOME_PATH/.env > $HOME_PATH/../../deployment-log/all/$FOLDERNAME/ibm-cloud.env
     sed 's/\APP_APIKEY=.*/APP_APIKEY=/' $HOME_PATH/../../code/.env  > $HOME_PATH/../../deployment-log/all/$FOLDERNAME/tmp1-service.env
-    sed 's/\SHELLY_PASSWORD=.*/SHELLY_PASSWORD=/' $HOME_PATH/../../deployment-log/all/$FOLDERNAME/tmp1-service.env  > $HOME_PATH/../../deployment-log/all/$FOLDERNAME/shelly-cloudant-grafana.env
+    sed 's/\SHELLY_PASSWORD=.*/SHELLY_PASSWORD=/' $HOME_PATH/../../deployment-log/all/$FOLDERNAME/tmp1-service.env  > $HOME_PATH/../../deployment-log/all/$FOLDERNAME/tmp2-service.env
+    sed 's/\GF_SECURITY_ADMIN_PASSWORD=.*/GF_SECURITY_ADMIN_PASSWORD=/' $HOME_PATH/../../deployment-log/all/$FOLDERNAME/tmp2-service.env  > $HOME_PATH/../../deployment-log/all/$FOLDERNAME/shelly-cloudant-grafana.env 
+    rm $HOME_PATH/../../deployment-log/all/$FOLDERNAME/tmp2-service.env
     rm $HOME_PATH/../../deployment-log/all/$FOLDERNAME/tmp1-service.env
 
     # create new files
