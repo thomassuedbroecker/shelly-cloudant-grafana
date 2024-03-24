@@ -1,4 +1,298 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_SIMPOD-JSON-DATASOURCE",
+      "label": "simpod-json-datasource",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "simpod-json-datasource",
+      "pluginName": "JSON"
+    }
+  ],
+  "__elements": {
+    "b705588b-a200-472e-aed7-5ab48b64a4c8": {
+      "name": "Returned  Phase 1 2024 V2",
+      "uid": "b705588b-a200-472e-aed7-5ab48b64a4c8",
+      "kind": 1,
+      "model": {
+        "datasource": {
+          "type": "simpod-json-datasource",
+          "uid": "${DS_SIMPOD-JSON-DATASOURCE}"
+        },
+        "description": "Negative values show returned in Phase 1",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-red",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "simpod-json-datasource",
+              "uid": "eabe83b8-091c-4454-af2f-ac86287cf48c"
+            },
+            "editorMode": "code",
+            "payload": "{\n   \"search_option\":\"custom\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"(phase1_power:[-5000 TO 0])\"\n}",
+            "refId": "A",
+            "target": "shelly3emmetric"
+          }
+        ],
+        "title": "Returned  Phase 1 2024",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "includeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "phase1-power": "Phase 1 Power",
+                "phase1-total": "Phase 1 Total",
+                "phase1-total-returned": "Phase 1 Total Returned",
+                "phase2-power": "Phase 2 Power",
+                "phase2-total": "Phase 2 Total",
+                "phase2-total-returned": "Phase 2 Total Returned",
+                "phase3-power": "Phase 3 Power",
+                "phase3-total": "Phase 3 Total",
+                "phase3-total-returned": "Phase 3 Total Returned",
+                "time": "Time",
+                "total-power": "Total Power"
+              }
+            }
+          },
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "Time",
+                  "Phase 1 Power"
+                ]
+              }
+            }
+          },
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "byVariable": false
+            }
+          }
+        ],
+        "type": "timeseries"
+      }
+    },
+    "f2f4e87f-7c8d-494b-b39f-65703db6a01a": {
+      "name": "Returned  Phase 1 in Januar 2024",
+      "uid": "f2f4e87f-7c8d-494b-b39f-65703db6a01a",
+      "kind": 1,
+      "model": {
+        "datasource": {
+          "type": "simpod-json-datasource",
+          "uid": "${DS_SIMPOD-JSON-DATASOURCE}"
+        },
+        "description": "Negative values show returned in Phase 1",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-red",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "simpod-json-datasource",
+              "uid": "eabe83b8-091c-4454-af2f-ac86287cf48c"
+            },
+            "editorMode": "code",
+            "payload": "{\n   \"search_option\":\"custom\",\n   \"search_topic\":\"date\",\n   \"search_string\":\"(phase1_power:[-10000 TO 0])\"\n}",
+            "refId": "A",
+            "target": "namespace"
+          }
+        ],
+        "title": "Returned  Phase 1 i2024",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "includeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "phase1-power": "Phase 1 Power",
+                "phase1-total": "Phase 1 Total",
+                "phase1-total-returned": "Phase 1 Total Returned",
+                "phase2-power": "Phase 2 Power",
+                "phase2-total": "Phase 2 Total",
+                "phase2-total-returned": "Phase 2 Total Returned",
+                "phase3-power": "Phase 3 Power",
+                "phase3-total": "Phase 3 Total",
+                "phase3-total-returned": "Phase 3 Total Returned",
+                "time": "Time",
+                "total-power": "Total Power"
+              }
+            }
+          },
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "Time",
+                  "Phase 1 Total Returned"
+                ]
+              }
+            }
+          },
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "byVariable": false
+            }
+          }
+        ],
+        "type": "timeseries"
+      }
+    }
+  },
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.3.1"
+    },
+    {
+      "type": "datasource",
+      "id": "simpod-json-datasource",
+      "name": "JSON",
+      "version": "0.6.3"
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -19,7 +313,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -32,10 +326,9 @@
       },
       "id": 4,
       "libraryPanel": {
-        "name": "Returned  Phase 1 in Januar 2024 V2",
-        "uid": "b705588b-a200-472e-aed7-5ab48b64a4c8"
-      },
-      "title": "Returned  Phase 1 in Januar 2024"
+        "uid": "b705588b-a200-472e-aed7-5ab48b64a4c8",
+        "name": "Returned  Phase 1 2024 V2"
+      }
     },
     {
       "gridPos": {
@@ -46,13 +339,12 @@
       },
       "id": 2,
       "libraryPanel": {
-        "name": "Returned  Phase 1 in Januar 2024",
-        "uid": "f2f4e87f-7c8d-494b-b39f-65703db6a01a"
-      },
-      "title": "Returned  Phase 1 in Januar 2024"
+        "uid": "f2f4e87f-7c8d-494b-b39f-65703db6a01a",
+        "name": "Returned  Phase 1 in Januar 2024"
+      }
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": [],
   "templating": {
@@ -60,7 +352,7 @@
   },
   "time": {
     "from": "2023-12-31T23:00:00.000Z",
-    "to": "2024-02-11T22:59:59.000Z"
+    "to": "2024-12-31T22:59:59.000Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -72,6 +364,6 @@
   "timezone": "",
   "title": "Returned 2024",
   "uid": "a51bdd68-3a7c-4c9b-8746-d0b6bd592684",
-  "version": 4,
+  "version": 7,
   "weekStart": ""
 }
