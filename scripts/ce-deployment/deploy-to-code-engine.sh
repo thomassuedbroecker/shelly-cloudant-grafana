@@ -104,12 +104,8 @@ function build_and_push_container () {
     ibmcloud cr namespace-list -v
     ibmcloud cr image-list
     rm $HOME/.docker/config.json
-    #ibmcloud cr login --client ${CONTAINER_RUNTIME}
-    ibmcloud cr login --client podman
-    # 6. Set to the right container registry region
-    ibmcloud cr region-set $CR_REGION
+    ibmcloud cr login --client ${CONTAINER_RUNTIME}
     
-
     # 5. In case the IBM Cloud resource group for the IBM Container Registry is different, the automation changes the IBM Cloud target for the resource group.
     ERROR=$(ibmcloud target -g $CR_RESOURCE_GROUP 2>&1)
     RESULT=$(echo $ERROR | grep 'FAILED' | awk '{print $1;}')
@@ -120,7 +116,7 @@ function build_and_push_container () {
     fi
 
     # 6. Set to the right container registry region
-    #ibmcloud cr region-set $CR_REGION
+    ibmcloud cr region-set $CR_REGION
 
     # 7. Create a new namespace; if the namespace doesn't exists
     CURR_CONTAINER_NAMESPACE=$(ibmcloud cr namespace-list -v | grep $CR_REPOSITORY | awk '{print $1;}')
@@ -135,8 +131,6 @@ function build_and_push_container () {
     else
         echo "Container exists: ($CODEENGINE_APP_IMAGE_URL)"
     fi
-
-    read ANY_KEY
 
     # 9. Set back to the right IBM Cloud resource group, in case the resource group was changed
     ibmcloud target -g $IBM_CLOUD_RESOURCE_GROUP
