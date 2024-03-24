@@ -4,8 +4,8 @@ FROM grafana/grafana:latest
 USER root
 
 RUN apk update
-RUN apk add python3
-RUN apk add --no-cache supervisor
+RUN apk add --no-cache python3 py3-pip py3-virtualenv supervisor
+RUN rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 RUN python3 -m ensurepip --upgrade
 # Update packages based on security scan IBM Cloud container registry
 RUN apk upgrade libssl3 libcrypto3 libexpat libexpat
@@ -39,7 +39,7 @@ RUN python3 -m pip install --upgrade "ibmcloudant>=0.0.27"
 
 # Create modules folder
 RUN mkdir modules
-RUN python3 -m pip freeze > requirements.txt 
+#RUN python3 -m pip freeze > requirements.txt 
 
 RUN ls -al
 

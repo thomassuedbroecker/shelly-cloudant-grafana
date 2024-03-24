@@ -101,7 +101,14 @@ function build_and_push_container () {
     cd "$HOME_PATH"
     
     # 4. Login to  IBM Cloud Container Registry
-    ibmcloud cr login --client ${CONTAINER_RUNTIME}
+    ibmcloud cr namespace-list -v
+    ibmcloud cr image-list
+    rm $HOME/.docker/config.json
+    #ibmcloud cr login --client ${CONTAINER_RUNTIME}
+    ibmcloud cr login --client podman
+    # 6. Set to the right container registry region
+    ibmcloud cr region-set $CR_REGION
+    
 
     # 5. In case the IBM Cloud resource group for the IBM Container Registry is different, the automation changes the IBM Cloud target for the resource group.
     ERROR=$(ibmcloud target -g $CR_RESOURCE_GROUP 2>&1)
@@ -113,7 +120,7 @@ function build_and_push_container () {
     fi
 
     # 6. Set to the right container registry region
-    ibmcloud cr region-set $CR_REGION
+    #ibmcloud cr region-set $CR_REGION
 
     # 7. Create a new namespace; if the namespace doesn't exists
     CURR_CONTAINER_NAMESPACE=$(ibmcloud cr namespace-list -v | grep $CR_REPOSITORY | awk '{print $1;}')
@@ -124,12 +131,12 @@ function build_and_push_container () {
     # 8. Create new container image if it doesn't exists
     CURR_CONTAINER_IMAGE=$(ibmcloud cr image-list | grep $CI_TAG | awk '{print $2;}')
     if [ "$CI_TAG" != "$CURR_CONTAINER_IMAGE" ]; then
-        
-        ${CONTAINER_RUNTIME} login -u iamapikey -p $IBM_CLOUD_API_KEY $CR
         ${CONTAINER_RUNTIME} push "$CODEENGINE_APP_IMAGE_URL"
     else
         echo "Container exists: ($CODEENGINE_APP_IMAGE_URL)"
     fi
+
+    read ANY_KEY
 
     # 9. Set back to the right IBM Cloud resource group, in case the resource group was changed
     ibmcloud target -g $IBM_CLOUD_RESOURCE_GROUP
