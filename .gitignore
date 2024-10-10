@@ -161,6 +161,7 @@ cython_debug/
 
 # Custom
 code/shelly-cloudant-grafana-env-3.11/
+code/shelly-cloudant-grafana-env-3.12/
 code/.env
 shelly-cloudant-grafana.code-workspace
 .vscode
@@ -174,3 +175,5 @@ deployment-log/*
 !deployment-log/last/README_1.md
 !deployment-log/all/README_2.md
 stream_overview_shelly3em.md
+scripts/data1.json
+scripts/time-series.json

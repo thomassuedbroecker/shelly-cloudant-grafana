@@ -6,7 +6,7 @@ export CONTAINER_RUNTIME=podman
 
 # IBM Cloud - variables
 source "$HOME_PATH"/.env
-# QA Service - variables
+# Application - variables
 source "$HOME_PATH"/../../code/.env
 
 # Reuse an existing commit ID

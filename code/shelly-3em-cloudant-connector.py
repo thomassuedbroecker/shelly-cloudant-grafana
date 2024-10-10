@@ -457,6 +457,7 @@ async def db_search_custom(cloudant_search:Cloudant_search) -> Any:
 def get_all_shelly_docs() -> Any:
     """
     This endpoint gets all `Shelly docs` from the the Cloudant database.
+    The count is limited to **50** entries.
     """
     try: 
      

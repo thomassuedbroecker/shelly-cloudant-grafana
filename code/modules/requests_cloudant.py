@@ -2,6 +2,8 @@ import requests
 from .load_env import load_cloudant_env, load_apikey_env
 from .requests_ibmcloud_token import get_token
 import sys
+#import json
+#import pandas as pd
 
 import logging
 
@@ -356,11 +358,45 @@ def get_all_docs():
                         headers=headers
                 )
 
+                #print(f"\n\nLog 'get_all_docs':\n{response.status_code}\n")
+
                 # 6. Verify result
                 if (response.status_code == 200):
-                        data_all=response.json()
-                        data = data_all
-                        verification = True
+                        data_all_raw = response.json()
+                        data_rows = data_all_raw['rows']
+                        #print(f"\n\nLog 'get_all_docs' - 'data_all':\n{len(data_rows)}\n")
+                        
+                        ### BEGIN - SAVE TO JSON FOR TIME SERIES
+                        #save_data_rows = []
+                        #i = 0
+                        #for row in data_rows:
+                        #     print(f"{row['doc']['result']['emeters'][0]['power']},  {row['doc']['result']['emeters'][0]['voltage']}, {row['doc']['result']['date']}")
+                        #     entry = { "power": row['doc']['result']['emeters'][0]['power'],  
+                        #               "voltage": row['doc']['result']['emeters'][0]['voltage'], 
+                        #               "date": row['doc']['result']['date'] }
+                        #     save_data_rows.append(entry)
+                             #print(f"\nLog row: {i}\n")
+                        #     i = i + 1
+                        #     if i == 22864:
+                        #          break
+                        #print(f"\nLog rows len: {len( save_data_rows_init)}\n")
+                        #with open('time-series.json', 'w', encoding='utf-8') as f:
+                        #     json.dump(save_data_rows, f)
+                        ### END - SAVE TO JSON FOR TIME SERIES
+                        
+                        # Reduce to display in the fastapi
+                        new_data_rows = []
+                        if len(data_rows) > 50:
+                             i = 0
+                             for entry in data_rows:
+                                  new_data_rows.append(entry)
+                                  i = i + 1
+                                  if i > 50:
+                                       break
+                             data = new_data_rows
+                        else:
+                             data = data_rows
+                             verification = True
                 else:
                         verification = False
                         data=response.json()
